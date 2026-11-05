@@ -1,0 +1,81 @@
+{
+  "expo": {
+    "name": "FakeLives",
+    "slug": "fakelives",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "fakelives",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0B0B10",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.zqh7y.fakelives",
+      "infoPlist": {
+        "NSCameraUsageDescription": "FakeLives shows your camera on screen so it looks like you are streaming. Nothing is recorded or uploaded.",
+        "NSPhotoLibraryUsageDescription": "FakeLives lets you pick a profile picture from your photos.",
+        "NSMicrophoneUsageDescription": "FakeLives listens so the fake chat can react to what you say. Nothing is recorded.",
+        "NSSpeechRecognitionUsageDescription": "FakeLives turns your speech into text on your phone so the fake chat can answer you."
+      }
+    },
+    "android": {
+      "package": "com.zqh7y.fakelives",
+      "adaptiveIcon": {
+        "backgroundColor": "#0B0B10",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0B0B10",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 120
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "FakeLives shows your camera on screen so it looks like you are streaming. Nothing is recorded or uploaded.",
+          "microphonePermission": false,
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "FakeLives lets you pick a profile picture from your photos.",
+          "cameraPermission": false
+        }
+      ],
+      "expo-font",
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "FakeLives listens so the fake chat can react to what you say. Nothing is recorded.",
+          "speechRecognitionPermission": "FakeLives turns your speech into text on your phone so the fake chat can answer you.",
+          "androidSpeechServicePackages": [
+            "com.google.android.googlequicksearchbox"
+          ]
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
