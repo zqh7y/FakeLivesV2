@@ -84,10 +84,14 @@ npm run typecheck   # tsc --noEmit
 npm run lint        # expo lint
 ```
 
-## Build
+## Get the APK
+
+Every push to `master` builds a release APK on GitHub Actions. Open the repo's **Actions** tab, pick the latest **Android APK** run, and download the `FakeLives-apk` artifact at the bottom of the page (unzip it, copy the `.apk` to your phone, allow installs from unknown sources, tap it). You can also start a build by hand from the Actions tab with **Run workflow**. The APK is signed with the debug key: fine for testing and sharing with friends, not for the Play Store.
+
+For store builds use EAS:
 
 ```bash
-npx eas build -p android --profile preview
+npx eas-cli build -p android --profile production
 ```
 
 ## Tech

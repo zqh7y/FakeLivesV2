@@ -57,8 +57,7 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "FakeLives lets you pick a profile picture from your photos.",
-          "cameraPermission": false
+          "photosPermission": "FakeLives lets you pick a profile picture from your photos."
         }
       ],
       "expo-font",
