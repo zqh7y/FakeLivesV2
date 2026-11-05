@@ -15,7 +15,6 @@ export interface TopBarProps {
   host: HostInfo;
   likes: number;
   viewers: number;
-  followers: number;
   elapsedSec: number;
   onPressHost: () => void;
   onPressClose: () => void;

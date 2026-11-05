@@ -10,7 +10,7 @@ import { PressableScale } from '@/components/pressable-scale';
 import { VerifiedBadge } from '@/components/verified-badge';
 import { Composer, CountPill, LiveTag, QuietRow, mediaShadow, moneyLabel, sharedStyles as s } from '@/components/live/platforms/shared';
 import type { BottomBarProps, ChatItemProps, TopBarProps } from '@/components/live/platforms/types';
-import { Palette, Sizes, Spacing } from '@/constants/theme';
+import { Sizes, Spacing } from '@/constants/theme';
 
 export function TopBar({ platform, host, viewers, onPressHost, onPressClose }: TopBarProps) {
   return (
@@ -90,5 +90,5 @@ export const ChatItem = memo(function ChatItem({ platform, event, host }: ChatIt
 
 const styles = StyleSheet.create({
   host: { maxWidth: '62%', paddingVertical: Spacing.xs },
-  comment: { alignItems: 'flex-start', paddingVertical: Spacing.xxs, backgroundColor: Palette.black + '00' },
+  comment: { alignItems: 'flex-start', paddingVertical: Spacing.xxs },
 });

@@ -5,6 +5,7 @@ import { StyleSheet, TextInput, View, type StyleProp, type TextStyle, type ViewS
 
 import { AppText } from '@/components/app-text';
 import type { IconName } from '@/components/button';
+import { LiveBadge } from '@/components/live-badge';
 import { NumberTicker } from '@/components/number-ticker';
 import { PressableScale } from '@/components/pressable-scale';
 import { TwitchNameColors, formatMoney, type PlatformMeta } from '@/constants/platforms';
@@ -24,13 +25,11 @@ export function nameColorFor(name: string): string {
   return TwitchNameColors[hashString(name) % TwitchNameColors.length];
 }
 
-/** A LIVE tag in the platform's live colour. */
+/** The LIVE tag in the platform's live colour: the shared pulsing badge. */
 export function LiveTag({ color, compact, style }: { color: string; compact?: boolean; style?: StyleProp<ViewStyle> }) {
   return (
-    <View style={[styles.liveTag, compact ? styles.liveTagCompact : null, { backgroundColor: color }, style]}>
-      <AppText variant="tiny" color="white">
-        LIVE
-      </AppText>
+    <View style={style}>
+      <LiveBadge color={color} compact={compact} />
     </View>
   );
 }
@@ -235,14 +234,6 @@ export const sharedStyles = StyleSheet.create({
 });
 
 const styles = StyleSheet.create({
-  liveTag: {
-    paddingHorizontal: Spacing.sm,
-    height: 22,
-    borderRadius: Radii.xs,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  liveTagCompact: { height: 18, paddingHorizontal: Spacing.xs + 2 },
   pill: {
     flexDirection: 'row',
     alignItems: 'center',

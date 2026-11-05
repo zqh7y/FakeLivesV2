@@ -181,7 +181,6 @@ export default function LiveScreen() {
             host={host}
             likes={snapshot.likes}
             viewers={snapshot.viewers}
-            followers={stats.followers + snapshot.followers}
             elapsedSec={snapshot.elapsedSec}
             onPressHost={() => setShowProfile(true)}
             onPressClose={() => setConfirmEnd(true)}
@@ -197,7 +196,7 @@ export default function LiveScreen() {
             <SideAction
               icon={speech.listening ? 'mic' : 'mic-off-outline'}
               label={speech.listening ? 'Listening' : 'Listen'}
-              variant={speech.listening ? 'accent' : 'glass'}
+              activeColor={speech.listening ? platform.color : undefined}
               onPress={toggleListen}
             />
           </View>
@@ -240,10 +239,10 @@ export default function LiveScreen() {
   );
 }
 
-function SideAction({ icon, label, onPress, variant = 'glass' }: { icon: IconButtonProps['icon']; label: string; onPress: () => void; variant?: IconButtonProps['variant'] }) {
+function SideAction({ icon, label, onPress, activeColor }: { icon: IconButtonProps['icon']; label: string; onPress: () => void; activeColor?: string }) {
   return (
     <View style={styles.sideAction}>
-      <IconButton icon={icon} label={label} variant={variant} size={Sizes.control} onPress={onPress} />
+      <IconButton icon={icon} label={label} variant="glass" size={Sizes.control} onPress={onPress} style={activeColor ? { backgroundColor: activeColor } : null} />
       <AppText variant="tiny" color="onMedia">
         {label}
       </AppText>

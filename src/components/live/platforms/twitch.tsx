@@ -9,7 +9,6 @@ import { IconButton } from '@/components/icon-button';
 import { PressableScale } from '@/components/pressable-scale';
 import { Composer, CountPill, LiveTag, QuietRow, TimerPill, mediaShadow, moneyLabel, nameColorFor, sharedStyles as s } from '@/components/live/platforms/shared';
 import type { BottomBarProps, ChatItemProps, TopBarProps } from '@/components/live/platforms/types';
-import { formatMoney } from '@/constants/platforms';
 import { Palette, Radii, Sizes, Spacing } from '@/constants/theme';
 import type { BotBadge } from '@/types';
 import { formatCompact } from '@/utils/format';
@@ -49,9 +48,13 @@ export function BottomBar({ platform, onSend, onGift, onShare }: BottomBarProps)
   );
 }
 
+/** Twitch draws moderators in green and VIPs in pink. */
+const MOD_GREEN = '#00AD03';
+const VIP_PINK = '#E005B9';
+
 function TwitchBadge({ kind, color }: { kind: BotBadge | 'host'; color: string }) {
   const icon = kind === 'host' ? 'videocam' : kind === 'mod' ? 'shield' : kind === 'vip' ? 'diamond' : kind === 'top' ? 'trophy' : 'star';
-  const bg = kind === 'host' ? Palette.live : kind === 'mod' ? '#00AD03' : kind === 'vip' ? '#E005B9' : color;
+  const bg = kind === 'mod' ? MOD_GREEN : kind === 'vip' ? VIP_PINK : color;
   return (
     <View style={[styles.badge, { backgroundColor: bg }]}>
       <Ionicons name={icon} size={9} color={Palette.white} />
@@ -143,8 +146,6 @@ export const ChatItem = memo(function ChatItem({ platform, event, host }: ChatIt
     </View>
   );
 });
-
-export { formatMoney };
 
 const styles = StyleSheet.create({
   host: { maxWidth: '62%' },

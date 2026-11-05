@@ -1,14 +1,14 @@
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, View } from 'react-native';
 
-import { Palette } from '@/constants/theme';
+import { Palette, Sizes } from '@/constants/theme';
 
 export interface VerifiedBadgeProps {
   size?: number;
 }
 
 /** The blue verified check. */
-export function VerifiedBadge({ size = 16 }: VerifiedBadgeProps) {
+export function VerifiedBadge({ size = Sizes.verified }: VerifiedBadgeProps) {
   return (
     <View
       style={[styles.badge, { width: size, height: size, borderRadius: size / 2 }]}

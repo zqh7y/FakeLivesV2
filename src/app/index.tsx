@@ -15,15 +15,13 @@ import { SectionHeader } from '@/components/section-header';
 import { Slider } from '@/components/slider';
 import { TextField } from '@/components/text-field';
 import { VerifiedBadge } from '@/components/verified-badge';
-import { GrowthOptions, SpeedOptions, ViewerPresets } from '@/constants/options';
+import { GrowthOptions, SpeedOptions, VIEWERS_HELP, ViewerPresets } from '@/constants/options';
 import { Platforms } from '@/constants/platforms';
 import { Palette, Sizes, Spacing } from '@/constants/theme';
 import { MAX_VIEWERS, MIN_VIEWERS, displayNameOf, effectiveStats, useSettingsStore, usernameOf } from '@/store/settings-store';
 import { clamp, formatCompact, parseLooseNumber } from '@/utils/format';
 import { haptic } from '@/utils/haptics';
 import { randInt } from '@/utils/random';
-
-export const VIEWERS_HELP = 'Try 12400, 12k or 1.5m';
 
 export default function HomeScreen() {
   const router = useRouter();

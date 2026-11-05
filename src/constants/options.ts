@@ -16,3 +16,6 @@ export const SpeedOptions: { key: ChatSpeed; label: string; emoji: string }[] = 
   { key: 'busy', label: 'Busy', emoji: '🔥' },
   { key: 'insane', label: 'Insane', emoji: '🌪️' },
 ];
+
+/** Shown wherever a loose number ("12k", "1.5m") is typed. */
+export const VIEWERS_HELP = 'Try 12400, 12k or 1.5m';

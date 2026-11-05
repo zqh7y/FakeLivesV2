@@ -11,7 +11,8 @@ import { Screen } from '@/components/screen';
 import { SectionHeader } from '@/components/section-header';
 import { TextField } from '@/components/text-field';
 import { ToggleRow } from '@/components/toggle-row';
-import { VIEWERS_HELP } from '@/app/index';
+import { VIEWERS_HELP } from '@/constants/options';
+import { Platforms } from '@/constants/platforms';
 import { Sizes, Spacing } from '@/constants/theme';
 import { deriveStats, displayNameOf, useSettingsStore } from '@/store/settings-store';
 import { formatCompact, parseLooseNumber } from '@/utils/format';
@@ -22,7 +23,10 @@ export default function ProfileScreen() {
   const profile = useSettingsStore((s) => s.profile);
   const viewers = useSettingsStore((s) => s.audience.viewers);
   const setProfile = useSettingsStore((s) => s.setProfile);
+  const platform = Platforms[useSettingsStore((s) => s.platform)];
   const auto = deriveStats(viewers);
+  const followerNoun = platform.followerNoun;
+  const FollowerLabel = followerNoun.charAt(0).toUpperCase() + followerNoun.slice(1);
 
   const pickImage = async () => {
     try {
@@ -76,7 +80,7 @@ export default function ProfileScreen() {
         <ToggleRow label="Verified badge" description="The blue check next to your name" emoji="✅" value={profile.verified} onValueChange={(verified) => setProfile({ verified })} />
         <ToggleRow
           label="Automatic stats"
-          description={`Scale with your viewers · ${formatCompact(auto.followers)} followers, ${formatCompact(auto.likes)} likes`}
+          description={`Scale with your viewers · ${formatCompact(auto.followers)} ${followerNoun}, ${formatCompact(auto.likes)} likes`}
           emoji="📊"
           value={profile.autoStats}
           onValueChange={(autoStats) => setProfile(autoStats ? { autoStats } : { autoStats, followers: profile.followers || auto.followers, likes: profile.likes || auto.likes })}
@@ -84,7 +88,7 @@ export default function ProfileScreen() {
         />
         {!profile.autoStats ? (
           <View style={styles.statFields}>
-            <NumberField label="Followers" value={profile.followers} onCommit={(followers) => setProfile({ followers })} />
+            <NumberField label={FollowerLabel} value={profile.followers} onCommit={(followers) => setProfile({ followers })} />
             <NumberField label="Likes" value={profile.likes} onCommit={(likes) => setProfile({ likes })} />
             <NumberField label="Following" value={profile.following} onCommit={(following) => setProfile({ following })} />
           </View>
